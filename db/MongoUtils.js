@@ -3,6 +3,8 @@ const MongoClient = require("mongodb").MongoClient;
 function MongoUtils() {
   const mu = {},
     user = "vaca", //process.env.USER,
+     //No se deben tener las claves en el repositorio usar una variable de entorno en una carpeta .env
+     //si usan heroku esta aplicación permite manejar variables de entorno con facilidad con el comando heroku config:set Nombre variable=Valor
     password = "vaca123"; //process.env.PASSWORD;
   (dbName = "smartSchedule"), (colName = "schedules");
 
@@ -21,7 +23,7 @@ function MongoUtils() {
   mu.auth = {};
 
   // Create one user
-  mu.auth.create = body =>
+  mu.auth.creat
     mu.connect().then(client => {
       // console.log("MongoUtils:Entró al create vacío de MongoUtils, con el usuario ", name);
       const userCol = client.db(dbName).collection("auth");
