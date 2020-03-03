@@ -82,6 +82,15 @@ router.get("/schedules/:user", function(req, res) {
   });
 });
 
+// Get a list of schedules
+router.get("/schedulesMany/:users", function(req, res) {
+  console.log("Entró a /schedulesMany con GET.", req.params);
+  bd.schedules.findMany( req.params ).then(schedules => {
+    console.log(schedules);
+    res.send(schedules);
+  });
+});
+
 // Create empty schedule of an especific user
 router.post("/schedules/create", (req, res) => {
   console.log("Llegó a create con los parámetros: ", req.body);

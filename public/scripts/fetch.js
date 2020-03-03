@@ -77,18 +77,18 @@ const render = (registers, usuario) => {
         td3.textContent = startEndHours[1];
 
         // Creates fourth column
-        const a = document.createElement("a");
-        a.href="#";
-        a.textContent="Delete";
-        const td4 = document.createElement("td");
+    //    const a = document.createElement("a");
+     //   a.href="#";
+      //  a.textContent="Delete";
+       // const td4 = document.createElement("td");
 
         // Appends all created objects
         tr.appendChild(th);
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);
-        td4.appendChild(a);
-        tr.appendChild(td4);
+     //   td4.appendChild(a);
+     //   tr.appendChild(td4);
 
         tbody.appendChild(tr);
 

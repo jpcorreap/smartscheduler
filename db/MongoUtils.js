@@ -33,7 +33,7 @@ function MongoUtils() {
   // Find items in schedules collection
   mu.schedules.find = query =>
     mu.connect().then(client => {
-      console.log("MONGOUTILS. Entró al schedules.find con el query ", query );
+      console.log("MONGOUTILS. Entró al schedules.find con el query ", query);
       const schedulesCol = client.db(dbName).collection(colName);
       return schedulesCol
         .find(query)
@@ -52,6 +52,17 @@ function MongoUtils() {
         .findOne({ user: new ObjectID(user) })
         .finally(() => client.close());
     });
+
+  mu.schedules.findMany = users =>
+    mu.connect().then(client => {
+      const schedule = client.db(dbName).collection(colName);
+
+      // when searching by id we need to create an ObjectID
+      return schedule
+        .find({ users: { $in: users } })
+        .finally(() => client.close());
+    });
+
 
   // Create one empty schedule
   mu.schedules.create = name =>

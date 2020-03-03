@@ -12,10 +12,36 @@
       <h4 >Welcome to <strong><%= title %></strong>! <br> An easy solution to find hours in common with your friends.</h4>
     </div>
   </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+  <h5>First step: Create an empty schedule for an user:</h5>
+  <form action="/schedules/create" method="POST">
+    <div class="form-group">
+      <input
+        type="name"
+        name="user"
+        class="form-control"
+        aria-describedby="emailHelp"
+        placeholder="Enter user"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+<br>
+<br>
+  <h5>1. Add a bussy hour for an specific user:</h5>
+  <div class="d-flex justify-content-center">
+    <%- include("./form_hour.ejs") %>
+  </div>
   
   <br />
   <br />
-  <h5>To view your busy hours, please insert your user: </h5>
+  <h5>To view busy hours, please insert your user: </h5>
   <br>
     <div class="form-group">
       <input
@@ -31,59 +57,31 @@
 
   <%- include("./view_schedule.ejs") %>
 
-  <h5><strong>VACA:</strong> Borrar horas sirve desde MongoUtils, se llama removeBusyHour. Falta pensar en conectarlo con esta tabla, el profe generaba links dinámicamente en la tabla para ver los detalles de las notas.</h5>
   <br>
   <br>
 
-  <h5>1. Add a bussy hour for an specific user: <strong>(FUNCIONA)</strong></h5>
-  <div class="d-flex justify-content-center">
-    <%- include("./form_hour.ejs") %>
-  </div>
 
-<br>
-  <h5>2. Create an empty schedule for an user: <strong>(FUNCIONA)</strong></h5>
-  <form action="/schedules/create" method="POST">
-    <div class="form-group">
-      <input
-        type="name"
-        name="user"
-        class="form-control"
-        aria-describedby="emailHelp"
-        placeholder="Enter user"
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
 
-<br>
-<br>
-<h5>3. Show schedule of a specific user <strong>(NO FUNCIONA)</strong></h5>
-<form action="/userschedule" method="GET">
-    <div class="form-group">
-      <input
-        type="name"
-        name="user"
-        class="form-control"
-        aria-describedby="emailHelp"
-        placeholder="Enter user"
-      />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-
-<br>
 <br>
 
 
 <br>
 <br>
-<h5>4. <a href="/schedules">Obtener un JSON con todos los schedules.</a> <strong>(FUNCIONA, FALTA FILTRAR POR PERSONA O DÍA)</strong></h5>
 
-<br>
-<br>
+<h5>5.Free hours between users (separated by colons):</h5>
+<div class="form-group">
+  <input
+    type="name"
+    name="user"
+    class="form-control"
+    aria-describedby="emailHelp"
+    placeholder="Enter user"
+    id="viewUserHours"
+  />
+</div>
+<button class="btn" ><a href="/schedules">View free hours</a></button>
 
-<h5><strong>5. EL REQUERIMIENTO MÁS IMPORTANTE:</strong></h5>
-<h6>Cuando se obtengan los horarios de personas específicas, se hace la función que encuentra huecos.</h6>
+<%- include("./view_report.ejs") %>
 
 </div>
 
